@@ -1,6 +1,6 @@
 # TransNext-Pytorch
 This is a warehouse for TransNext-pytorch-model, can be used to train your image datasets for classification tasks.
-The code mainly comes from official [source code](https://github.com/DaiShiResearch/TransNeXt)
+The code mainly comes from official [source code](https://github.com/DaiShiResearch/TransNeXt).
 
 ## [TransNeXt: Robust Foveal Visual Perception for Vision Transformers](https://arxiv.org/pdf/2311.17132.pdf)
 
