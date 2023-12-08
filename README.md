@@ -10,8 +10,8 @@ The code mainly comes from official [source code](https://github.com/DaiShiResea
     ├── my_dataset.py: Customize reading data sets and define transforms data enhancement methods
     ├── split_data.py: Define the function to read the image dataset and divide the training-set and test-set
     ├── threeaugment.py: Additional data augmentation methods
-├── models: GhostNetV2 Model
-    ├── build_model.py: Construct "GhostNetV2" model
+├── models: TransNeXt Model
+    ├── build_model.py: Construct "TransNeXt" model
 ├── util:
     ├── engine.py: Function code for a training/validation process
     ├── losses.py: Knowledge distillation loss, combined with teacher model (if any)
@@ -44,7 +44,7 @@ optimizer = SophiaG(model.parameters(), lr=2e-4, betas=(0.965, 0.99), rho=0.01, 
 6. master_port: <master node (machine/server) port number>
 ```
 ### Note: 
-If you want to use multiple GPU for training, whether it is a single machine with multiple GPUs or multiple machines with multiple GPUs, each GPU will divide the batch_size equally. For example, batch_size=4 in my train_gpu.py. If I want to use 2 GPUs for training, each GPU will divide the batch_size. That means batch_size=2 on each GPU. ___Do not let batch_size=1 on each GPU___, otherwise BN layer maybe report an error. If you recive an error like "___ONE-PEACE training and evaluation script: error: unrecognized arguments: --local-rank=1___" when you use distributed multi-GPUs training, just replace the command "___torch.distributed.launch___" to "___torch.distributed.run___".
+If you want to use multiple GPU for training, whether it is a single machine with multiple GPUs or multiple machines with multiple GPUs, each GPU will divide the batch_size equally. For example, batch_size=4 in my train_gpu.py. If I want to use 2 GPUs for training, it means that the batch_size on each GPU is 4. That means batch_size=2 on each GPU. ___Do not let batch_size=1 on each GPU___, otherwise BN layer maybe report an error. If you recive an error like "___ONE-PEACE training and evaluation script: error: unrecognized arguments: --local-rank=1___" when you use distributed multi-GPUs training, just replace the command "___torch.distributed.launch___" to "___torch.distributed.run___".
 
 ### train model with single-machine single-GPU：
 ```
@@ -72,11 +72,10 @@ On the second machine: python -m torch.distributed.launch --nproc_per_node=1 --n
 
 ## Citation
 ```
-@article{tang2022ghostnetv2,
-  title={GhostNetv2: enhance cheap operation with long-range attention},
-  author={Tang, Yehui and Han, Kai and Guo, Jianyuan and Xu, Chang and Xu, Chao and Wang, Yunhe},
-  journal={Advances in Neural Information Processing Systems},
-  volume={35},
-  pages={9969--9982},
-  year={2022}
+@article{shi2023transnext,
+  title={TransNeXt: Robust Foveal Visual Perception for Vision Transformers},
+  author={Shi, Dai},
+  journal={arXiv preprint arXiv:2311.17132},
+  year={2023}
 }
+```
